@@ -7,12 +7,18 @@ class FoodsController < ApplicationController
   end
 
   def create
-    @food = Food.new(food_params)
-    if @food.save
-      redirect_to("")
-    else
-      render("")
+    i = 1
+    while foods = Food.where(module_id: params[:module_id]).count >= 0
+      food = Food.find(i)
+      food.destroy
+      i += 1
     end
+    @food = Food.new(food_params)
+    @food.save
+  end
+
+  def destroy
+    @food.destroy
   end
 
   private
