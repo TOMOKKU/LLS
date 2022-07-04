@@ -10,7 +10,6 @@ Rails.application.routes.draw do
     :passwords => 'users/passwords'
   }
 
-  get 'vegetable/index'
   get 'users/index'
   root to: "home#top"
 
